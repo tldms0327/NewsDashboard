@@ -55,26 +55,15 @@ const GridList = ({category}) => {
   };
 
   useEffect(() => {
-    // message()
-    fetchData();
+    fetchData()
   }, []);
-
-  if (loading) return <div>로딩중..</div>;
-  if (error) return <div>에러가 발생했습니다.</div>;
-  if (!data) return null;
 
   return (
     <React.Fragment>
         <CssBaseline/>
           <main>
-            {/* <ul>
-              {data.map(doc => {
-                <li>
-                  {data.datetime} ({data.cate})
-                </li>
-              })}
-            </ul> */}
-            <Typography>{data.title}</Typography>
+            <Typography>{test}</Typography>
+            <Typography>{test}</Typography>
             <Typography>{currentCategory}</Typography>
             <Typography>{title}</Typography>
             <Container className={classes.cardGrid} maxWidth="md">

@@ -2,6 +2,7 @@ from fastapi import FastAPI
 import uvicorn
 
 from starlette.middleware.cors import CORSMiddleware
+<<<<<<< HEAD
 Hot_live_Data = [
     {
         'image_url': "https://images.unsplash.com/random",
@@ -423,6 +424,8 @@ Hot_live_Data = [
     }
 ]
 
+=======
+>>>>>>> f8ef031 ([build] build base fastAPI successfully)
 
 app = FastAPI()
 
@@ -443,6 +446,7 @@ async def root():
 	return { "message" : "Hello World" }
 
 @app.get("/test")
+<<<<<<< HEAD
 async def gogo(datetime:str,cate:str="Hot"):
     return Hot_live_Data
 
@@ -466,6 +470,11 @@ async def gogo(datetime:str,cate:str="Hot"):
 # async def word_day(cate:str,datetime=str):
 #     print("fourth_route")
 #     return
+=======
+async def root():
+	return { "message" : "Hello World2" }
+
+>>>>>>> f8ef031 ([build] build base fastAPI successfully)
 # @app.on_event("startup")
 # async def startup_db_client():
 #     app.mongodb_client = AsyncIOMotorClient(settings.DB_URL)
@@ -477,6 +486,7 @@ async def gogo(datetime:str,cate:str="Hot"):
 #     app.mongodb_client.close()
 
 
+<<<<<<< HEAD
 # app.include_router(todo_router, tags=["tasks"], prefix="/task")
 
 if __name__ == "__main__":
@@ -485,3 +495,6 @@ if __name__ == "__main__":
         host="localhost", 
         port=8000, 
         reload=True)
+=======
+# app.include_router(todo_router, tags=["tasks"], prefix="/task")
+>>>>>>> f8ef031 ([build] build base fastAPI successfully)
