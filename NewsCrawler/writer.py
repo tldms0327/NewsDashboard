@@ -31,16 +31,19 @@ class Writer(object):
         try:
             values_to_insert = cls.to_db_value(values)
             cls.insert_to_db(table, values_to_insert)
+            return 'Done'
         except Exception as e:
-            print(e, '\n==>', [x['aid'] for x in values])
+            return e
+
 
     @classmethod
-    def get_url_to_crawl(cls, category: int, start_date: str, end_date: str) -> List[List]:
+    def get_latest_url(cls, category: str) -> List[str]:
         db_con = psycopg2.connect(**CONFIG)
         db_cur = db_con.cursor(cursor_factory=psycopg2.extras.DictCursor)
-        query = f''' SELECT category, aid, url FROM news_metadata \
-                     WHERE upload_date >= {start_date} and upload_date <= {end_date}\
-                     AND category = {category}'''
+        query = f''' SELECT url FROM news_info 
+                     WHERE category = {category}
+                     ORDER BY datetime desc 
+                     LIMIT 20;'''
         db_cur.execute(query)
 
         result = db_cur.fetchall()
@@ -67,5 +70,4 @@ class Writer(object):
                      WHERE aid in ({','.join(str(id) for id in ids)})'''
         db_cur.execute(query)
         db_con.commit()
-
 
