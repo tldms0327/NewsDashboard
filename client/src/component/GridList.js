@@ -18,6 +18,7 @@ const GridList = ({category}) => {
   const [title, setTitle] = useState(null);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   const [test, setTest] = useState(null);
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -68,6 +69,8 @@ const GridList = ({category}) => {
 =======
 =======
 >>>>>>> d816cd3 (뭐 어쩔꺼야)
+=======
+>>>>>>> 4e612bb (feat: add Route function)
 
   const _getLiveData = ({datetime}) => {
     let items = [];
