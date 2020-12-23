@@ -1,16 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import {useSelector, useDispatch} from 'react-redux'
 import './App.css';
 import allActions from './actions'
-import Album from './component/Album'
 import Background from './component/Background';
 import GridList from './component/GridList';
 import {Copyright} from './component/Copyright';
-import {NAVER_COLOR, BLUE_COLOR} from './models/colors';
-import {DATA} from './component/Data';
+import {NAVER_COLOR} from './models/colors';
 
 const CateButton = ({ classes, dispatch, setCategory, category, buttonName }) => {
   if (buttonName == 'Hot'){
@@ -41,24 +39,10 @@ const App = () => {
 
   const user = {name: "Rei"}
   const classes = useStyles();
-  const datas = DATA;
   
   useEffect(() => {
     dispatch(allActions.userActions.setUser(user))
     dispatch(allActions.categoryActions.setCategory(category))
-    let items = [];
-    datas.forEach((doc) => {
-      const cate = doc.cate;
-      const datetime = doc.datetime;
-      const title = doc.title;
-      if (category == cate) {
-        items.push({
-          cate: cate,
-          datetime: datetime,
-          title: title,
-        })
-      }
-    })
   }, [])
 
   return (
