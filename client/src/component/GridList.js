@@ -22,13 +22,8 @@ const GridList = ({category}) => {
     fetch(`${apiURL}/test/go?datetime=${datetime}`)
       .then(response => response.json())
       .then((data) => {
-        data.forEach((doc) => {
-          items.push({
-            datetime : doc.datatime,
-          })
+        setTest(data);
         })
-      });
-    setTest(items);
   })
 
   return (
@@ -36,7 +31,7 @@ const GridList = ({category}) => {
         <CssBaseline/>
           <main>
             <Typography>{currentCategory}</Typography>
-            <Typography>{test.datetime}</Typography>
+            <Typography>{test}</Typography>
             <Container className={classes.cardGrid} maxWidth="md">
             <Grid container spacing={4}>
               {cards.map((card) => (
