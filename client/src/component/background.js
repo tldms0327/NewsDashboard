@@ -19,7 +19,6 @@ import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 // import DayPickerInput from 'react-day-picker/DayPickerInput';
 // import 'react-day-picker/lib/style.css';
-// import DateFnsUtils from '@date-io/date-fns';
 // import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 function Background(){
     const classes = useStyles();
