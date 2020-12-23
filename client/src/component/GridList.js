@@ -16,9 +16,6 @@ const GridList = ({category}) => {
   const [datetime, setDatetime] = useState('20201202');
   const [image_url, setImage_url] = useState(null);
   const [title, setTitle] = useState(null);
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   const [test, setTest] = useState(null);
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -66,37 +63,6 @@ const GridList = ({category}) => {
   if (error) return <div>에러가 발생했습니다.</div>;
   if (!data) return null;
 
-=======
-=======
->>>>>>> d816cd3 (뭐 어쩔꺼야)
-=======
->>>>>>> 4e612bb (feat: add Route function)
-
-  const _getLiveData = ({datetime}) => {
-    let items = [];
-    fetch('${apiURL}/test/go/')
-  }
-
-  useEffect(() => {
-    setCategory(category);
-    let items = [];
-    await fetch("test/go")
-      .then(response => response.json())
-      .then((data) => {
-        data.forEach((doc) => {
-          items.push({
-            image_url : doc.image_url,
-            title : doc.title,
-            url : doc.url,
-            keyword : doc.keyword,
-            press : doc.press,
-            title_list
-          })
-        })
-        
-      })
-  })
->>>>>>> 0c25cb0 (feat: add Route function)
   return (
     <React.Fragment>
         <CssBaseline/>
