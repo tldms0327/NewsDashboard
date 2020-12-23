@@ -15,36 +15,28 @@ const GridList = ({category}) => {
   const [datetime, setDatetime] = useState('20201202');
   const [image_url, setImage_url] = useState(null);
   const [title, setTitle] = useState(null);
-
-  const _getLiveData = ({datetime}) => {
-    let items = [];
-    fetch('${apiURL}/test/go/')
-  }
-
+  const [test, setTest] = useState(null);
   useEffect(() => {
     setCategory(category);
     let items = [];
-    await fetch("test/go")
+    fetch(`${apiURL}/test/go?datetime=${datetime}`)
       .then(response => response.json())
       .then((data) => {
         data.forEach((doc) => {
           items.push({
-            image_url : doc.image_url,
-            title : doc.title,
-            url : doc.url,
-            keyword : doc.keyword,
-            press : doc.press,
-            title_list
+            datetime : doc.datatime,
           })
         })
-        
-      })
+      });
+    setTest(items);
   })
+
   return (
     <React.Fragment>
         <CssBaseline/>
           <main>
             <Typography>{currentCategory}</Typography>
+            <Typography>{test.datetime}</Typography>
             <Container className={classes.cardGrid} maxWidth="md">
             <Grid container spacing={4}>
               {cards.map((card) => (
