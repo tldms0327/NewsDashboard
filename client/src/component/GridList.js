@@ -8,22 +8,7 @@ import CardFrame from './card/CardFrame';
 import axios from "axios";
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-const apiURL = "http://localhost:8000";
-
-// function useFetch(url) {
-//   const [data, setData] = useState([]);
-//   const [loading, setLoading] = useState(true);
-//   async function fetchUrl() {
-//     await axios.get(url).then(response => {
-//       setData(response.data.data);
-//     });
-//     setLoading(false);
-//   }
-//   useEffect(()=>{
-//     fetchUrl();
-//   }, []);
-//   return [data, loading];
-// }
+const apiURL = "http://localhost:8000/";
 
 const GridList = ({category}) => {
   const classes = useStyles();
@@ -82,14 +67,7 @@ const GridList = ({category}) => {
     <React.Fragment>
         <CssBaseline/>
           <main>
-            {/* <ul>
-              {data.map(doc => {
-                <li>
-                  {data.datetime} ({data.cate})
-                </li>
-              })}
-            </ul> */}
-            <Typography>{data.title}</Typography>
+            <Typography>{test}</Typography>
             <Typography>{currentCategory}</Typography>
             <Typography>{title}</Typography>
             <Container className={classes.cardGrid} maxWidth="md">
