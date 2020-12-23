@@ -1,27 +1,133 @@
 import React, { useEffect, useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
+import Button from '@material-ui/core/Button';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Link from '@material-ui/core/Link';
 import {NAVER_COLOR} from '../models/colors';
 import ReactWordcloud from 'react-wordcloud';
 import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
-import {WORD} from './Word';
-import Moment from 'react-moment';
-
+// import DayPickerInput from 'react-day-picker/DayPickerInput';
+// import 'react-day-picker/lib/style.css';
+// import DateFnsUtils from '@date-io/date-fns';
+// import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 function Background(){
-    const classes = useStyles(); 
+    const classes = useStyles();
+    // const [date, changeDate] = useState(new Date());   
     const [startDate, setStartDate] = useState(new Date()); 
-    const words = WORD;
-    const options = {
-      rotations: 2,
-      rotationAngles: [0, 0],
-      fontSizes:[50,100],
-    };
+    const words = [
+      {
+        text: 'told',
+        value: 64,
+      },
+      {
+        text: 'mistake',
+        value: 11,
+      },
+      {
+        text: 'thought',
+        value: 16,
+      },
+      {
+        text: 'bad',
+        value: 17,
+      },
+      {
+        text: 'told',
+        value: 64,
+      },
+      {
+        text: 'mistake',
+        value: 11,
+      },
+      {
+        text: 'thought',
+        value: 16,
+      },
+      {
+        text: 'bad',
+        value: 17,
+      },
+      {
+        text: 'told',
+        value: 64,
+      },
+      {
+        text: 'mistake',
+        value: 11,
+      },
+      {
+        text: 'thought',
+        value: 16,
+      },
+      {
+        text: 'bad',
+        value: 17,
+      },
+        {
+          text: 'told',
+          value: 64,
+        },
+        {
+          text: 'mistake',
+          value: 11,
+        },
+        {
+          text: 'thought',
+          value: 16,
+        },
+        {
+          text: 'bad',
+          value: 17,
+        },
+        {
+          text: 'told',
+          value: 64,
+        },
+        {
+          text: 'mistake',
+          value: 11,
+        },
+        {
+          text: 'thought',
+          value: 16,
+        },
+        {
+          text: 'bad',
+          value: 17,
+        },
+        {
+          text: 'told',
+          value: 64,
+        },
+        {
+          text: 'mistake',
+          value: 11,
+        },
+        {
+          text: 'thought',
+          value: 16,
+        },
+        {
+          text: 'bad',
+          value: 17,
+        },
+      ]
+      const options = {
+        rotations: 2,
+        rotationAngles: [0, 0],
+        fontSizes:[50,100],
+      };
     return(
         <>
         <CssBaseline />
