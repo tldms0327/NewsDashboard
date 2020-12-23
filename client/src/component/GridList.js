@@ -56,18 +56,6 @@ const GridList = ({category}) => {
 
   useEffect(() => {
     // message()
-    const fetchData = async () => {
-      try {
-        setError(null);
-        setData(null);
-        setLoading(true);
-        const response = await axios.get(`${apiURL}/test`);
-        setData(response.data);
-      } catch(e) {
-        setError(e);
-      }
-      setLoading(false);
-    };
     fetchData();
   }, []);
 
@@ -86,7 +74,7 @@ const GridList = ({category}) => {
                 </li>
               })}
             </ul> */}
-            <Typography>{test}</Typography>
+            <Typography>{data.message}</Typography>
             <Typography>{currentCategory}</Typography>
             <Typography>{title}</Typography>
             <Container className={classes.cardGrid} maxWidth="md">
