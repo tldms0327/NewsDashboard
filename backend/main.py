@@ -22,9 +22,32 @@ async def root():
 	return { "message" : "Hello World" }
 
 @app.get("/test")
-async def root():
-	return { "message" : "Hello World2" }
+async def gogo():
+    datetimes = "1234"
+    cates = "ad"
+    results = {"datetime" : datetimes, "cate" : cates}
+    return results
 
+@app.get("cate/live/")
+async def cate_live(datetime:str,cate:str="hot"):
+    print("first_route")
+    
+    return
+
+@app.get("cate/day")
+async def cate_day(datetime=str,cate:str="hot"):
+    print("second_route")
+    return
+
+@app.get("word/live")
+async def word_live(cate:str,datetime=str):
+    print("third_route")
+    return
+
+@app.get("word/day")
+async def word_day(cate:str,datetime=str):
+    print("fourth_route")
+    return
 # @app.on_event("startup")
 # async def startup_db_client():
 #     app.mongodb_client = AsyncIOMotorClient(settings.DB_URL)
@@ -37,3 +60,10 @@ async def root():
 
 
 # app.include_router(todo_router, tags=["tasks"], prefix="/task")
+
+if __name__ == "__main__":
+    uvicorn.run(
+        "main.app", 
+        host="localhost", 
+        port=8000, 
+        reload=True)

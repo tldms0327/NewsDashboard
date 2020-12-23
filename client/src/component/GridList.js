@@ -8,7 +8,7 @@ import CardFrame from './card/CardFrame';
 import axios from "axios";
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-const apiURL = "http://localhost:8000/";
+const apiURL = "http://localhost:8000";
 
 const GridList = ({category}) => {
   const classes = useStyles();
@@ -56,6 +56,18 @@ const GridList = ({category}) => {
 
   useEffect(() => {
     // message()
+    const fetchData = async () => {
+      try {
+        setError(null);
+        setData(null);
+        setLoading(true);
+        const response = await axios.get(`${apiURL}/test`);
+        setData(response.data);
+      } catch(e) {
+        setError(e);
+      }
+      setLoading(false);
+    };
     fetchData();
   }, []);
 
@@ -67,6 +79,13 @@ const GridList = ({category}) => {
     <React.Fragment>
         <CssBaseline/>
           <main>
+            {/* <ul>
+              {data.map(doc => {
+                <li>
+                  {data.datetime} ({data.cate})
+                </li>
+              })}
+            </ul> */}
             <Typography>{test}</Typography>
             <Typography>{currentCategory}</Typography>
             <Typography>{title}</Typography>
