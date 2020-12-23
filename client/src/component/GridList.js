@@ -7,13 +7,38 @@ import Container from '@material-ui/core/Container';
 import CardFrame from './card/CardFrame';
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const apiURL = "http://localhost:8000";
 
 const GridList = ({category}) => {
   const classes = useStyles();
   const [currentCategory, setCategory] = useState('Hot');
+  const [datetime, setDatetime] = useState('20201202');
+  const [image_url, setImage_url] = useState(null);
+  const [title, setTitle] = useState(null);
+
+  const _getLiveData = ({datetime}) => {
+    let items = [];
+    fetch('${apiURL}/test/go/')
+  }
 
   useEffect(() => {
     setCategory(category);
+    let items = [];
+    await fetch("test/go")
+      .then(response => response.json())
+      .then((data) => {
+        data.forEach((doc) => {
+          items.push({
+            image_url : doc.image_url,
+            title : doc.title,
+            url : doc.url,
+            keyword : doc.keyword,
+            press : doc.press,
+            title_list
+          })
+        })
+        
+      })
   })
   return (
     <React.Fragment>
