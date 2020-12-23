@@ -447,6 +447,7 @@ async def root():
 
 @app.get("/test")
 <<<<<<< HEAD
+<<<<<<< HEAD
 async def gogo(datetime:str,cate:str="Hot"):
     return Hot_live_Data
 
@@ -475,6 +476,34 @@ async def root():
 	return { "message" : "Hello World2" }
 
 >>>>>>> f8ef031 ([build] build base fastAPI successfully)
+=======
+async def gogo():
+    datetimes = "1234"
+    cates = "ad"
+    results = {"datetime" : datetimes, "cate" : cates}
+    return results
+
+@app.get("cate/live/")
+async def cate_live(datetime:str,cate:str="hot"):
+    print("first_route")
+    
+    return
+
+@app.get("cate/day")
+async def cate_day(datetime=str,cate:str="hot"):
+    print("second_route")
+    return
+
+@app.get("word/live")
+async def word_live(cate:str,datetime=str):
+    print("third_route")
+    return
+
+@app.get("word/day")
+async def word_day(cate:str,datetime=str):
+    print("fourth_route")
+    return
+>>>>>>> cde2e07 ([chor] backend update)
 # @app.on_event("startup")
 # async def startup_db_client():
 #     app.mongodb_client = AsyncIOMotorClient(settings.DB_URL)
@@ -487,6 +516,9 @@ async def root():
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> cde2e07 ([chor] backend update)
 # app.include_router(todo_router, tags=["tasks"], prefix="/task")
 
 if __name__ == "__main__":
@@ -494,7 +526,11 @@ if __name__ == "__main__":
         "main.app", 
         host="localhost", 
         port=8000, 
+<<<<<<< HEAD
         reload=True)
 =======
 # app.include_router(todo_router, tags=["tasks"], prefix="/task")
 >>>>>>> f8ef031 ([build] build base fastAPI successfully)
+=======
+        reload=True)
+>>>>>>> cde2e07 ([chor] backend update)

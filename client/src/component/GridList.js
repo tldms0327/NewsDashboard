@@ -58,11 +58,13 @@ const GridList = ({category}) => {
     fetchData()
   }, []);
 
+  if (loading) return <div>로딩중..</div>;
+  if (error) return <div>에러가 발생했습니다.</div>;
+  if (!data) return null;
   return (
     <React.Fragment>
         <CssBaseline/>
           <main>
-            <Typography>{test}</Typography>
             <Typography>{test}</Typography>
             <Typography>{currentCategory}</Typography>
             <Typography>{title}</Typography>
