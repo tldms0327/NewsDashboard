@@ -17,6 +17,7 @@ const GridList = ({category}) => {
   const [image_url, setImage_url] = useState(null);
   const [title, setTitle] = useState(null);
 <<<<<<< HEAD
+<<<<<<< HEAD
   const [test, setTest] = useState(null);
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -65,6 +66,8 @@ const GridList = ({category}) => {
   if (!data) return null;
 
 =======
+=======
+>>>>>>> d816cd3 (뭐 어쩔꺼야)
 
   const _getLiveData = ({datetime}) => {
     let items = [];
