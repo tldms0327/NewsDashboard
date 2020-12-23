@@ -74,7 +74,7 @@ const GridList = ({category}) => {
                 </li>
               })}
             </ul> */}
-            <Typography>{data.message}</Typography>
+            <Typography>{data.title}</Typography>
             <Typography>{currentCategory}</Typography>
             <Typography>{title}</Typography>
             <Container className={classes.cardGrid} maxWidth="md">
