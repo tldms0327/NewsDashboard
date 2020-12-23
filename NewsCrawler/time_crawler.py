@@ -21,7 +21,6 @@ logger.setLevel(logging.INFO)
 
 class Crawler(object):
     """실시간 크롤러"""
-    caching: RedisCaching
 
     def __init__(self, category_input: str):
         self.category_name: str = category_input
@@ -80,6 +79,7 @@ class Crawler(object):
     def news_crawling(self, urls: List[str]):
         now = str(datetime.now())
         news_data = []
+        urls = urls[::-1]  # 오래된 기사부터 먼저 캐싱하기 위해 순서 reverse
 
         for url in urls:
 

@@ -36,8 +36,9 @@ class RedisCaching():
             pass
         else:
             latest_urls = Writer.get_latest_url(self.cate)
-            for url in latest_urls:
+            for url in latest_urls[::-1]:
                 self.rd.zadd(self.cate, {url[0]: f"{time.time()}"})
+                time.sleep(0.005)
 
     def update_redis(self, url: str):
         # 새로 크롤링된 뉴스는 redis에 넣고, redis에서 장 오래된 뉴스 삭제

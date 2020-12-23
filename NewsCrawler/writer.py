@@ -40,10 +40,10 @@ class Writer(object):
     def get_latest_url(cls, category: str) -> List[str]:
         db_con = psycopg2.connect(**CONFIG)
         db_cur = db_con.cursor(cursor_factory=psycopg2.extras.DictCursor)
-        query = f''' SELECT url FROM news_info 
+        query = f''' SELECT distinct url FROM news_info 
                      WHERE category = {category}
                      ORDER BY datetime desc 
-                     LIMIT 20;'''
+                     LIMIT 100;'''
         db_cur.execute(query)
 
         result = db_cur.fetchall()
