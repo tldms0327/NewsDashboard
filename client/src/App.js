@@ -11,7 +11,7 @@ import {Copyright} from './component/Copyright';
 import {NAVER_COLOR} from './models/colors';
 
 const CateButton = ({ classes, dispatch, setCategory, category, buttonName }) => {
-  if (buttonName == 'Hot'){
+  if (buttonName === 'Hot'){
     return (
       <Button className={category === buttonName ? classes.selected : classes.hotButton}
       onClick={()=> {
@@ -43,7 +43,7 @@ const App = () => {
   useEffect(() => {
     dispatch(allActions.userActions.setUser(user))
     dispatch(allActions.categoryActions.setCategory(category))
-  }, [])
+  }, [category])
 
   return (
     <div className="App">
