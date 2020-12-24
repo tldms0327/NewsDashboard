@@ -3,6 +3,8 @@ from typing import List, Dict
 from NewsCrawler.db_config import CONFIG
 import boto3
 import json
+from pymongo import MongoClient
+
 
 class Writer(object):
 
@@ -70,4 +72,10 @@ class Writer(object):
                      WHERE aid in ({','.join(str(id) for id in ids)})'''
         db_cur.execute(query)
         db_con.commit()
+
+    @classmethod
+    def write_in_mongodb(cls, data: List[Dict]):
+        host = 'mongodb://mongo-0.mongo,mongo-1.mongo,mongo-2.mongo:27017/'
+        db_con = MongoClient(host)
+
 
