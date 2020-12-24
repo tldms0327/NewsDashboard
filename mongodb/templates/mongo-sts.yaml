@@ -21,8 +21,10 @@ spec:
         image: mongo:3
         command:
           - mongod
+          - "--bind_ip"
+          - "0.0.0.0"
           - "--replSet"
-          - rs0
+          - "rs0"
           - "--smallfiles"
           - "--noprealloc"
         ports:
