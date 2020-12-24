@@ -25,6 +25,9 @@ class Writer(object):
         query = f''' insert into {table} values {','.join(values)}'''
         db_con = psycopg2.connect(**CONFIG)
         db_cur = db_con.cursor(cursor_factory=psycopg2.extras.DictCursor)
+        db_cur.execute("select * from news_temp limit 10")
+        print(f"connection test: {db_cur.fetchall()}")
+        db_con.rollback()
         db_cur.execute(query)
         db_con.commit()
 
@@ -42,7 +45,7 @@ class Writer(object):
     def get_latest_url(cls, category: str) -> List[str]:
         db_con = psycopg2.connect(**CONFIG)
         db_cur = db_con.cursor(cursor_factory=psycopg2.extras.DictCursor)
-        query = f''' SELECT url FROM news_info 
+        query = f''' SELECT url FROM news_temp
                      WHERE category = {category}
                      ORDER BY datetime desc 
                      LIMIT 100;'''
