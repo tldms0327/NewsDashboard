@@ -52,7 +52,7 @@ class Crawler(object):
         # Multi Process PID
         pid = str(os.getpid())
         logger.info(f"{datetime.now()}, {self.category_name} PID: {pid}")
-        self.caching.cache_pid(category_name, pid)
+        self.caching.cache_pid(self.category_name, pid)
 
         URL = "http://news.naver.com/main/list.nhn?mode=LSD&mid=sec&sid1=" + str(
             self.category)
@@ -141,13 +141,13 @@ class Crawler(object):
                 del text_imgurl_lst
 
             except Exception as e:
-                logger.error(f"{e}, Parsing {category_name} PID: {str(os.getpid())} Date: {now} Is FAILED.")
+                logger.error(f"{e}, Parsing {self.category_name} PID: {str(os.getpid())} Date: {now} Is FAILED.")
                 continue
 
         writer = Writer.insert_values_to_db('news_info', news_data)
         if writer == 'Done':
             logger.info(
-                f"Insert: {category_name} PID: {str(os.getpid())} {[x['id'] for x in news_data]} articles in DataBase")
+                f"Insert: {self.category_name} PID: {str(os.getpid())} {[x['id'] for x in news_data]} articles in DataBase")
         else:
             logger.error(f"inserting {news_data} Failed.")
         del news_data
