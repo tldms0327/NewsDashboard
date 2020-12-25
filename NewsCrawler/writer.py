@@ -4,6 +4,12 @@ from NewsCrawler.db_config import CONFIG
 import boto3
 import json
 from pymongo import MongoClient
+import logging
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s : %(message)s',
+                    datefmt="%Y-%m-%d %H:%M:%S")
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
 
 class Writer(object):
@@ -79,7 +85,11 @@ class Writer(object):
         db = client["Info"]
         coll = db["Info"]
         for n in news_data:
-            data = {n['id']: {'title': n['title'], 'url': n['url'], 'press': n['press'], 'img_url': n['img_url']}}
-            coll.insert_one(data)
+            data = {'id': n['id'], 'title': n['title'], 'url': n['url'], \
+                    'press': n['press'], 'img_url': n['img_url']}
+            try:
+                coll.insert_one(data)
+            except Exception as e:
+                logger.error(e)
 
         return 'Done'
