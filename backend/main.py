@@ -10,6 +10,8 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 
 
 app = FastAPI()
+url = 'mongodb://mongo-0.mongo,mongo-1.mongo,mongo-2.mongo:27017/'
+client = MongoClient(url)
 
 origins = [
     "http://localhost:3000"
@@ -33,10 +35,10 @@ async def custom_http_exception_handler(request, exc):
 
 #go
 @app.get("/cate/live/")
-async def cate_live(datetime:str,cate:str="hot"):
-    db=client['Real_time_Result']
-    mycol=db[datetime]
-    item=mycol.find_one({},{cate:1})
+async def cate_live(datetime: str, cate: str="hot"):
+    db = client['Real_time_Result']
+    mycol = db[datetime]
+    item = mycol.find_one({},{cate:1})
     result=[]
     for a in range(len(item[cate])):
         i=a+1
