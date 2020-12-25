@@ -144,7 +144,7 @@ class Crawler(object):
                 logger.error(f"{e}, Parsing {self.category_name} PID: {str(os.getpid())} Date: {now} Is FAILED.")
                 continue
 
-        writer = Writer.insert_values_to_db('news_temp', news_data)
+        writer = Writer.insert_values_to_db('news_info', news_data)
         if writer == 'Done':
             logger.info(
                 f"Insert: {self.category_name} PID: {str(os.getpid())} {[x['id'] for x in news_data]} articles in DataBase")
