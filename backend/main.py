@@ -31,32 +31,6 @@ async def custom_http_exception_handler(request, exc):
     return RedirectResponse("/")
 #에러뜰경우 root로
 
-@app.get("/test")
-async def gogo(datetime:str,cate:str="Hot",deleteItem:str=False):
-    result=[]
-    if(deleteItem=="False"):
-        a=0
-        for i in Hot_live_Data:
-            if i['show']!='False':
-                result.append(i)
-            if a==9:
-                break
-        return result
-    else:
-        num=int(deleteItem)
-        Hot_live_Data[num-1]['show']='False'
-        a=0
-        for i in Hot_live_Data:
-            if i['show']!='False':
-                result.append(i)
-                a+=1
-            if a==9:
-                break
-        return result
-    # deleteItem은 cluster_num, 해당 cluster_num의 show값을 'False'로 변경 후
-    # show값이 'False'가 아닌 9개의 데이터 반환
-
-
 @app.get("/cate/live/")
 async def cate_live(datetime:str,cate:str="hot"):
     print("first_route")
@@ -115,12 +89,12 @@ async def cate_live(datetime:str,cate:str="hot"):
         result.append(cur)
     return result
 
-if __name__ == "__main__":
-    uvicorn.run(
-        "main.app", 
-        host="localhost", 
-        port=8000, 
-        reload=True)
+# if __name__ == "__main__":
+#     uvicorn.run(
+#         "main.app", 
+#         host="localhost", 
+#         port=8000, 
+#         reload=True)
 
 # class front_in(BaseModel):
 #     datetime: str
