@@ -1,18 +1,18 @@
 apiVersion: extensions/v1beta1
-kind: front
+kind: Ingress
 metadata:
-  name: "front-ingress"
+  name: "back-ingress"
   annotations:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
   labels:
-    app: front
+    app: back
 spec:
   rules:
     - http:
         paths:
           - path: /*
             backend:
-              serviceName: front
+              serviceName: back
               servicePort: 8000
