@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: crawler
-          image: "532214462726.dkr.ecr.ap-northeast-2.amazonaws.com/front:dev"
+          image: "532214462726.dkr.ecr.ap-northeast-2.amazonaws.com/react:dev"
           imagePullPolicy: Always
           resources:
             limits:
