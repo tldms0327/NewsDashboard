@@ -4,7 +4,7 @@ from multiprocessing import Process
 import os
 import requests
 import re
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import List, Dict
 import logging
 from NewsCrawler.category import categories
@@ -77,7 +77,7 @@ class Crawler(object):
         return target_urls
 
     def news_crawling(self, urls: List[str]):
-        now = str(datetime.now())
+        now = str(datetime.now() + timedelta(hours=9))
         news_data = []
         urls = urls[::-1]  # 오래된 기사부터 먼저 캐싱하기 위해 순서 reverse
 
