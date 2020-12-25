@@ -14,5 +14,5 @@ spec:
         paths:
           - path: /*
             backend:
-              serviceName: back
+              serviceName: "back"
               servicePort: 8000
