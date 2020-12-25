@@ -3,7 +3,7 @@ import uvicorn
 from pydantic import BaseModel
 import pymongo
 from pymongo import MongoClient
-from bson import ObjectId
+# from bson import ObjectId
 from starlette.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
