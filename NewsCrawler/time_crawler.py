@@ -151,7 +151,7 @@ class Crawler(object):
         else:
             logger.error(f"inserting {news_data} Failed.")
 
-        mongo_writer = Writer.write_to_mongo('news_info', news_data)
+        mongo_writer = Writer.write_to_mongo(news_data)
         if mongo_writer == 'Done':
             logger.info(
                 f"Insert: {self.category_name} PID: {str(os.getpid())} {[x['id'] for x in news_data]} articles in MongoDB")
