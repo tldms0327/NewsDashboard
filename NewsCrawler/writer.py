@@ -72,3 +72,14 @@ class Writer(object):
         db_cur.execute(query)
         db_con.commit()
 
+    @classmethod
+    def write_to_mongo(cls, news_data: List[Dict]):
+        url = "mongodb://mongo-0.mongo,mongo-1.mongo,mongo-2.mongo:27017/"
+        client = MongoClient(url)
+        db = client["Info"]
+        coll = db["Info"]
+        for n in news_data:
+            data = {n['id']: {'title': n['title'], 'url': n['url'], 'press': n['press'], 'img_url': n['img_url']}}
+            coll.insert_one(data)
+
+        return 'Done'

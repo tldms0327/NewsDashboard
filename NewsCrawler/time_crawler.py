@@ -150,6 +150,13 @@ class Crawler(object):
                 f"Insert: {self.category_name} PID: {str(os.getpid())} {[x['id'] for x in news_data]} articles in DataBase")
         else:
             logger.error(f"inserting {news_data} Failed.")
+
+        mongo_writer = Writer.insert_values_to_db('news_info', news_data)
+        if mongo_writer == 'Done':
+            logger.info(
+                f"Insert: {self.category_name} PID: {str(os.getpid())} {[x['id'] for x in news_data]} articles in MongoDB")
+        else:
+            logger.error(f"inserting {news_data}  to MongoDB Failed.")
         del news_data
 
     def continuous_crawling(self):
