@@ -7,7 +7,7 @@ from pymongo import MongoClient
 from starlette.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
-import boto3
+# import boto3
 
 app = FastAPI()
 url = 'mongodb://mongo-0.mongo,mongo-1.mongo,mongo-2.mongo:27017/'
@@ -54,7 +54,7 @@ async def cate_live(datetime: str, cate: str="Hot"):
     result=[]
     for i in range(len(item[cate])):
         cur={}
-        main_id=item[cate][str(i)]["id_list"][0]
+        main_id=item[cate][str(i)]["id"][0]
         db=client['Info']
         main_news=db["Info"].find({"id":main_id})[0]
         cur['cluster_num']=i
@@ -64,7 +64,7 @@ async def cate_live(datetime: str, cate: str="Hot"):
         cur["press"]=main_news["press"]
         cur["keyword"]=item[cate][str(i)]["keyword_list"]
         cur["title_list"]=[]
-        for now_id in item[cate][str(i)]["id_list"]:
+        for now_id in item[cate][str(i)]["id"]:
             print(now_id)
             now_dic={}
             now_news=db["Info"].find({"id":now_id})
@@ -94,7 +94,7 @@ async def cate_live_nine(datetime:str,cate:str="Hot"):
         if num==10:
             break
         cur={}
-        main_id=item[cate][str(i)]["id_list"][0]
+        main_id=item[cate][str(i)]["id"][0]
         db=client['Info']
         main_news=db["Info"].find({"id":main_id})[0]
         cur['cluster_num']=i
@@ -104,7 +104,7 @@ async def cate_live_nine(datetime:str,cate:str="Hot"):
         cur["press"]=main_news["press"]
         cur["keyword"]=item[cate][str(i)]["keyword_list"]
         cur["title_list"]=[]
-        for now_id in item[cate][str(i)]["id_list"]:
+        for now_id in item[cate][str(i)]["id"]:
             print(now_id)
             now_dic={}
             now_news=db["Info"].find({"id":now_id})
@@ -127,7 +127,7 @@ async def cate_day(datetime:str,cate:str="Hot"):
     result=[]
     for i in range(len(item[cate])):
         cur={}
-        main_id=item[cate][str(i)]["id_list"][0]
+        main_id=item[cate][str(i)]["id"][0]
         db=client['Info']
         main_news=db["Info"].find({"id":main_id})[0]
         cur['cluster_num']=i
@@ -137,7 +137,7 @@ async def cate_day(datetime:str,cate:str="Hot"):
         cur["press"]=main_news["press"]
         cur["keyword"]=item[cate][str(i)]["keyword_list"]
         cur["title_list"]=[]
-        for now_id in item[cate][str(i)]["id_list"]:
+        for now_id in item[cate][str(i)]["id"]:
             print(now_id)
             now_dic={}
             now_news=db["Info"].find({"id":now_id})
@@ -162,7 +162,7 @@ async def cate_day_nine(datetime:str,cate:str="Hot"):
         if num==10:
             break
         cur={}
-        main_id=item[cate][str(i)]["id_list"][0]
+        main_id=item[cate][str(i)]["id"][0]
         db=client['Info']
         main_news=db["Info"].find({"id":main_id})[0]
         cur['cluster_num']=i
@@ -172,7 +172,7 @@ async def cate_day_nine(datetime:str,cate:str="Hot"):
         cur["press"]=main_news["press"]
         cur["keyword"]=item[cate][str(i)]["keyword_list"]
         cur["title_list"]=[]
-        for now_id in item[cate][str(i)]["id_list"]:
+        for now_id in item[cate][str(i)]["id"]:
             print(now_id)
             now_dic={}
             now_news=db["Info"].find({"id":now_id})
