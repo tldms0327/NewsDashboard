@@ -13,13 +13,21 @@
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:Nanjangpan" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cde657b4-c843-4b3c-9372-d7f1c5aefa6b" name="Default Changelist" comment="" />
+    <list default="true" id="cde657b4-c843-4b3c-9372-d7f1c5aefa6b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,17 +65,17 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/back-end" />
-      <recent name="$PROJECT_DIR$/front" />
-      <recent name="$PROJECT_DIR$/NewsCrawler" />
-      <recent name="$PROJECT_DIR$/mongodb/templates" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/mongodb/example" />
       <recent name="$PROJECT_DIR$/mongodb/templates" />
       <recent name="$PROJECT_DIR$/mongodb" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/back-end" />
+      <recent name="$PROJECT_DIR$/front" />
+      <recent name="$PROJECT_DIR$/NewsCrawler" />
+      <recent name="$PROJECT_DIR$/mongodb/templates" />
     </key>
   </component>
   <component name="RunManager" selected="Python.news_crawler">
