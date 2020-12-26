@@ -67,7 +67,7 @@ async def cate_live(datetime: str, cate: str="Hot"):
         for now_id in item[cate][str(i)]["id"]:
             print(now_id)
             now_dic={}
-            now_news=db["Info"].find({"id":now_id})
+            now_news=db["Info"].find({"id":now_id})[0]
             now_dic["title"]=now_news["title"]
             now_dic["url"]=now_news["url"]
             now_dic["press"]=now_news["press"]
@@ -107,7 +107,7 @@ async def cate_live_nine(datetime:str,cate:str="Hot"):
         for now_id in item[cate][str(i)]["id"]:
             print(now_id)
             now_dic={}
-            now_news=db["Info"].find({"id":now_id})
+            now_news=db["Info"].find({"id":now_id})[0]
             now_dic["title"]=now_news["title"]
             now_dic["url"]=now_news["url"]
             now_dic["press"]=now_news["press"]
@@ -140,7 +140,7 @@ async def cate_day(datetime:str,cate:str="Hot"):
         for now_id in item[cate][str(i)]["id"]:
             print(now_id)
             now_dic={}
-            now_news=db["Info"].find({"id":now_id})
+            now_news=db["Info"].find({"id":now_id})[0]
             now_dic["title"]=now_news["title"]
             now_dic["url"]=now_news["url"]
             now_dic["press"]=now_news["press"]
@@ -175,7 +175,7 @@ async def cate_day_nine(datetime:str,cate:str="Hot"):
         for now_id in item[cate][str(i)]["id"]:
             print(now_id)
             now_dic={}
-            now_news=db["Info"].find({"id":now_id})
+            now_news=db["Info"].find({"id":now_id})[0]
             now_dic["title"]=now_news["title"]
             now_dic["url"]=now_news["url"]
             now_dic["press"]=now_news["press"]
