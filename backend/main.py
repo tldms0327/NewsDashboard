@@ -41,7 +41,7 @@ async def custom_http_exception_handler(request, exc):
 @app.get("/cate/live/")
 async def cate_live(datetime: str, cate: str="hot"):
     db = client['Real_time_Result']
-    cols=db.collection_names()
+    cols=db.list_collection_names()
     col_list=[]
     for i in cols:
         col_list.append(i)
@@ -76,7 +76,7 @@ async def cate_live(datetime: str, cate: str="hot"):
 @app.get("/cate/live_nine/")
 async def cate_live_nine(datetime:str,cate:str="hot"):
     db=client['Real_time_Result']
-    cols=db.collection_names()
+    cols=db.list_collection_names()
     col_list=[]
     for i in cols:
         col_list.append(i)
