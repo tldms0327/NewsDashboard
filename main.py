@@ -7,7 +7,7 @@ from pymongo import MongoClient
 from starlette.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
-
+import boto3
 
 app = FastAPI()
 url = 'mongodb://mongo-0.mongo,mongo-1.mongo,mongo-2.mongo:27017/'
@@ -24,6 +24,7 @@ app.add_middleware(
     allow_headers=["Content-Type", "application/xml"],
 )
 
+categories = {'정치': '100', '경제': '101', '사회': '102', '생활문화': '103', '세계': '104', 'IT과학': '105', '오피니언': '110', 'Hot':'200'}
 @app.get("/")
 async def root():
    return { "message" : "Hello World" }
@@ -39,9 +40,10 @@ async def custom_http_exception_handler(request, exc):
 
 
 @app.get("/cate/live/")
-async def cate_live(datetime: str, cate: str="hot"):
+async def cate_live(datetime: str, cate: str="Hot"):
+    cate=categories[cate]
     db = client['Real_time_Result']
-    cols=db.collection_names()
+    cols=db.list_collection_names()
     col_list=[]
     for i in cols:
         col_list.append(i)
@@ -50,7 +52,7 @@ async def cate_live(datetime: str, cate: str="hot"):
     mycol = db[datetime]
     item = mycol.find_one({},{cate:1})
     result=[]
-    for a in range(len(item[cate])):
+    for i in range(len(item[cate])):
         cur={}
         main_id=item[cate][str(i)]["id_list"][0]
         db=client['Info']
@@ -74,9 +76,10 @@ async def cate_live(datetime: str, cate: str="hot"):
     return result
 
 @app.get("/cate/live_nine/")
-async def cate_live_nine(datetime:str,cate:str="hot"):
+async def cate_live_nine(datetime:str,cate:str="Hot"):
+    cate=categories[cate]
     db=client['Real_time_Result']
-    cols=db.collection_names()
+    cols=db.list_collection_names()
     col_list=[]
     for i in cols:
         col_list.append(i)
@@ -86,7 +89,7 @@ async def cate_live_nine(datetime:str,cate:str="hot"):
     item=mycol.find_one({},{cate:1})
     result=[]
     num=0
-    for a in range(len(item[cate])):
+    for i in range(len(item[cate])):
         num=num+1
         if num==10:
             break
@@ -113,7 +116,8 @@ async def cate_live_nine(datetime:str,cate:str="hot"):
     return result
 
 @app.get("/cate/day/")
-async def cate_day(datetime:str,cate:str="hot"):
+async def cate_day(datetime:str,cate:str="Hot"):
+    cate=categories[cate]
     #  "2015-06-15T00:00:00+09:00"
     datetime=str(datetime)
     datetime=datetime[:3]+datetime[5:7]+datetime[8:10]
@@ -121,7 +125,7 @@ async def cate_day(datetime:str,cate:str="hot"):
     mycol=db[datetime]
     item=mycol.find_one({},{cate:1})
     result=[]
-    for a in range(len(item[cate])):
+    for i in range(len(item[cate])):
         cur={}
         main_id=item[cate][str(i)]["id_list"][0]
         db=client['Info']
@@ -145,14 +149,15 @@ async def cate_day(datetime:str,cate:str="hot"):
     return result
 
 @app.get("/cate/day_nine/")
-async def cate_day_nine(datetime:str,cate:str="hot"):
+async def cate_day_nine(datetime:str,cate:str="Hot"):
+    cate=categories[cate]
     datetime=datetime[:3]+datetime[5:7]+datetime[8:10]
     db=client['Real_time_Result']
     mycol=db[datetime]
     item=mycol.find_one({},{cate:1})
     result=[]
     num=0
-    for a in range(len(item[cate])):
+    for i in range(len(item[cate])):
         num=num+1
         if num==10:
             break
@@ -177,3 +182,24 @@ async def cate_day_nine(datetime:str,cate:str="hot"):
             cur["title_list"].append(now_dic)
         result.append(cur)
     return result
+
+# session = boto3.Session(profile_name='ybigta-conference')
+# client = session.client('s3')
+# file = './wordcloud.png'
+# bucket = 'news-image'
+# key = 'test.png'
+# push = client.upload_file(file, bucket, key)
+
+# session = boto3.Session(profile_name='ybigta-conference')
+# client = session.client('s3')
+# obj = client.get_object(Bucket='news-image', Key='config/db_config.json')
+# CONFIG = json.loads(obj['Body'].read())
+
+# @app.get("/word/live/")
+# async def word_live(datetime: str):
+#     return
+
+# @app.get("/word/day/")
+# async def word_live(datetime: str):
+#     datetime=datetime[:3]+datetime[5:7]+datetime[8:10]
+#     return  
